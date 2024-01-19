@@ -63,10 +63,6 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {
 });
 app.use(morgan('combined', { stream: accessLogStream }));
 app.use(express.static('public'));
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
 
 app.get('/', function (req, res, next) {
   res.send('Welcome to my app!');
@@ -76,8 +72,9 @@ app.get('/movies', (req, res) => {
   res.json(topMovies);
 });
 
-app.get('/documentation.html', (req, res) => {
-  res.sendFile('public/documentation.html', { root: __dirname });
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 app.listen(8080, () => {
