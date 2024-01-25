@@ -9,7 +9,23 @@ app.use(bodyParser.json());
 app.use(morgan('common'));
 app.use(express.static('public'));
 
-let users = [];
+let users = [
+  {
+    id: 1,
+    name: 'Lyla',
+    favoriteMovies: ['Interstellar'],
+  },
+  {
+    id: 2,
+    name: 'Lyss',
+    favoriteMovies: ['The Holiday'],
+  },
+  {
+    id: 3,
+    name: 'Mike',
+    favoriteMovies: ['Avengers: Endgame'],
+  },
+];
 
 let movies = [
   {
@@ -230,7 +246,7 @@ app.get('/movies', (req, res) => {
 });
 
 //READ MOVIES BY TITLE
-app.get('movies/:title', (req, res) => {
+app.get('/movies/:title', (req, res) => {
   const { title } = req.params;
   const movie = movies.find((movie) => movie.Title === title);
   if (movie) {
@@ -241,7 +257,7 @@ app.get('movies/:title', (req, res) => {
 });
 
 //READ GENRES BY NAME
-app.get('movies/genre/:genreName', (req, res) => {
+app.get('/movies/genre/:genreName', (req, res) => {
   const { genreName } = req.params;
   const genre = movies.find((movie) => movie.Genre.Name === genreName).Genre;
   if (genre) {
@@ -252,10 +268,10 @@ app.get('movies/genre/:genreName', (req, res) => {
 });
 
 //READ DIRECTORS BY NAME
-app.get('movies/directors/:directorsName', (req, res) => {
+app.get('/movies/directors/:directorName', (req, res) => {
   const { directorName } = req.params;
   const director = movies.find(
-    (movies) => movie.director.directorName === directorName,
+    (movies) => movie.Director.Name === directorName,
   ).Director;
   if (director) {
     res.status(200).json(director);
