@@ -271,7 +271,7 @@ app.get('/movies/genre/:genreName', (req, res) => {
 app.get('/movies/directors/:directorName', (req, res) => {
   const { directorName } = req.params;
   const director = movies.find(
-    (movies) => movie.Director.Name === directorName,
+    (movie) => movie.Director.Name === directorName,
   ).Director;
   if (director) {
     res.status(200).json(director);
@@ -279,6 +279,9 @@ app.get('/movies/directors/:directorName', (req, res) => {
     res.status(400).send('No director found.');
   }
 });
+
+app.use(morgan('combined', { stream: log }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //ERROR HANDLING
 app.use((err, req, res, next) => {
