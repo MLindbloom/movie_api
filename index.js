@@ -280,9 +280,6 @@ app.get('/movies/directors/:directorName', (req, res) => {
   }
 });
 
-app.use(morgan('combined', { stream: log }));
-app.use(express.static(path.join(__dirname, 'public')));
-
 //ERROR HANDLING
 app.use((err, req, res, next) => {
   console.error(err.stack);
