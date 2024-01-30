@@ -71,9 +71,16 @@
             A JSON object with data about the requested movie like this:<br />
             { 'id': '#',<br />
             'Title': 'Interstellar',<br />
-            'Director': 'Christopher Nolan',<br />
-            'Year': '2014',<br />
-            'Genre': 'Action' }
+            'Description': '[Movie Description]',<br />
+            'Genre': {<br />
+            'Name': 'Action',<br />
+            'Description': '[Genre Description]'},<br />
+            'Director': {<br />
+            'Name': 'Christopher Nolan',<br />
+            'Bio': '[Director Bio]',<br />
+            'Birthyear': 'Year'},<br />
+            'ImagePath': 'image.png',<br />
+            'Featured': 'true' }
           </td>
         </tr>
         <tr>
@@ -82,18 +89,32 @@
           <td>POST</td>
           <td>
             A JSON object with data about the movie:<br />
-            { 'Title': 'Interstellar',<br />
-            'Director': 'Christopher Nolan',<br />
-            'Year': '2014',<br />
-            'Genre': 'Action' }
+            'Title': 'Interstellar',<br />
+            'Description': '[Movie Description]',<br />
+            'Genre': {<br />
+            'Name': 'Action',<br />
+            'Description': '[Genre Description]'},<br />
+            'Director': {<br />
+            'Name': 'Christopher Nolan',<br />
+            'Bio': '[Director Bio]',<br />
+            'Birthyear': 'Year'},<br />
+            'ImagePath': 'image.png',<br />
+            'Featured': 'true' }
           </td>
           <td>
             A JSON object with data about the movie, including an ID:<br />
             { 'id': '#',<br />
             'Title': 'Interstellar',<br />
-            'Director': 'Christopher Nolan',<br />
-            'Year': '2014',<br />
-            'Genre': 'Action' }
+            'Description': '[Movie Description]',<br />
+            'Genre': {<br />
+            'Name': 'Action',<br />
+            'Description': '[Genre Description]'},<br />
+            'Director': {<br />
+            'Name': 'Christopher Nolan',<br />
+            'Bio': '[Director Bio]',<br />
+            'Birthyear': 'Year'},<br />
+            'ImagePath': 'image.png',<br />
+            'Featured': 'true' }
           </td>
         </tr>
         <tr>
@@ -102,13 +123,23 @@
           <td>POST</td>
           <td>
             A JSON object with data about the user:<br />
-            { 'name': 'Keanu Reeves',<br />
-            'favoriteMovies': '[movieTitle]'}<br />
+            { 'email': 'email@email.com',<br />
+            'firstName': 'Keanu',<br />
+            'lastName': 'Reeves',<br />
+            'Birthday': '2000-01-02',<br />
+            'createdDate': 'Date',<br />
+            'updatedDate': 'Date',<br />
+            'favoriteMovies': '[movieTitle]'}
           </td>
           <td>
             A JSON object with data about the user, including an ID:<br />
             { 'id': '#',<br />
-            'Name': 'Keanu Reeves',<br />
+            'email': 'email@email.com',<br />
+            'firstName': 'Keanu',<br />
+            'lastName': 'Reeves',<br />
+            'Birthday': '2000-01-02',<br />
+            'createdDate': 'Date',<br />
+            'updatedDate': 'Date',<br />
             'favoriteMovies': '[movieTitle]'}
           </td>
         </tr>
@@ -118,15 +149,25 @@
           <td>PUT</td>
           <td>
             A JSON object with new data about the user:<br />
-            { 'name': '[Updated Name]', <br />
-            'favoriteMovies': '[]'}
+            { 'email': 'email@email.com',<br />
+            'firstName': 'Keanu',<br />
+            'lastName': 'Reeves',<br />
+            'Birthday': '2000-01-02',<br />
+            'createdDate': 'Date',<br />
+            'updatedDate': 'Date',<br />
+            'favoriteMovies': '[movieTitle]'}
           </td>
           <td>
             A JSON object with the updated user information, including ID:
             <br />
-            { 'id': '#', <br />
-            'name': '[Updated Name]', <br />
-            'favoriteMovies': '[]' }
+            { 'id': '#',<br />
+            'email': 'email@email.com',<br />
+            'firstName': 'Keanu',<br />
+            'lastName': 'Reeves',<br />
+            'Birthday': '2000-01-02',<br />
+            'createdDate': 'Date',<br />
+            'updatedDate': 'Date',<br />
+            'favoriteMovies': '[movieTitle]'}
           </td>
         </tr>
         <tr>
