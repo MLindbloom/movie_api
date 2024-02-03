@@ -44,7 +44,7 @@
         </tr>
         <tr>
           <td>Get List of Movies by Director</td>
-          <td>/movies/directors/:directorName</td>
+          <td>/movies/directors/[director name]</td>
           <td>GET</td>
           <td>None</td>
           <td>
@@ -54,7 +54,7 @@
         </tr>
         <tr>
           <td>Get List of Movies by Genre</td>
-          <td>/movies/genres/:genreName</td>
+          <td>/movies/genres/[genre]</td>
           <td>GET</td>
           <td>None</td>
           <td>
@@ -64,7 +64,7 @@
         </tr>
         <tr>
           <td>Get Information about a Movie by Title</td>
-          <td>/movies/:Title</td>
+          <td>/movies/[title]</td>
           <td>GET</td>
           <td>None</td>
           <td>
@@ -123,71 +123,69 @@
           <td>POST</td>
           <td>
             A JSON object with data about the user:<br />
-            {'Username': 'User1,<br />
-            'Password': 'Password1',<br />
-            'Email': 'Email@email.com',<br />
+            { 'email': 'email@email.com',<br />
+            'firstName': 'Keanu',<br />
+            'lastName': 'Reeves',<br />
             'Birthday': '2000-01-02',<br />
+            'createdDate': 'Date',<br />
+            'updatedDate': 'Date',<br />
             'favoriteMovies': '[movieTitle]'}
           </td>
           <td>
             A JSON object with data about the user, including an ID:<br />
             { 'id': '#',<br />
-            'Username': 'User1,<br />
-            'Password': 'Password1',<br />
-            'Email': 'Email@email.com',<br />
+            'email': 'email@email.com',<br />
+            'firstName': 'Keanu',<br />
+            'lastName': 'Reeves',<br />
             'Birthday': '2000-01-02',<br />
+            'createdDate': 'Date',<br />
+            'updatedDate': 'Date',<br />
             'favoriteMovies': '[movieTitle]'}
           </td>
         </tr>
         <tr>
           <td>Update User Information</td>
-          <td>/users/:Username</td>
+          <td>/users/id</td>
           <td>PUT</td>
           <td>
             A JSON object with new data about the user:<br />
-            {'Username': 'User1,<br />
-            'Password': 'Password1',<br />
-            'Email': 'Email@email.com',<br />
+            { 'email': 'email@email.com',<br />
+            'firstName': 'Keanu',<br />
+            'lastName': 'Reeves',<br />
             'Birthday': '2000-01-02',<br />
+            'createdDate': 'Date',<br />
+            'updatedDate': 'Date',<br />
             'favoriteMovies': '[movieTitle]'}
           </td>
           <td>
             A JSON object with the updated user information, including ID:
             <br />
             { 'id': '#',<br />
-            'Username': 'User1,<br />
-            'Password': 'Password1',<br />
-            'Email': 'Email@email.com',<br />
+            'email': 'email@email.com',<br />
+            'firstName': 'Keanu',<br />
+            'lastName': 'Reeves',<br />
             'Birthday': '2000-01-02',<br />
+            'createdDate': 'Date',<br />
+            'updatedDate': 'Date',<br />
             'favoriteMovies': '[movieTitle]'}
           </td>
         </tr>
         <tr>
-          <td>Add a movie to a User's Favoites List</td>
-          <td>/users/:Username/movies/:MovieID</td>
-          <td>POST</td>
-          <td>None</td>
-          <td>
-            A message confirming the movie was added to the User's favorites
-            list.
-          </td>
-        </tr>
-        <tr>
-          <td>Remove a movie from a User's favorites list</td>
-          <td>/users/:Username/movies/:MovieID</td>
-          <td>DELETE</td>
-          <td>None</td>
-          <td>
-            A message confirming that the movie was removed from the User's
-            favorites list.
-          </td>
-        </tr>
-        <tr>
-          <td>Remove a User by Username</td>
-          <td>/users/:Username</td>
+          <td>Remove a User by ID</td>
+          <td>/users/id/[id]</td>
           <td>DELETE</td>
           <td>None</td>
           <td>A message confirming that a user was deleted.</td>
+        </tr>
+        <tr>
+          <td>Remove a Movie from a User's Favorite List</td>
+          <td>/users/[name]/[movie]</td>
+          <td>DELETE</td>
+          <td>None</td>
+          <td>
+            A message indicating whether the movie was successfully removed from
+            the user's favorited movies
+          </td>
         </tr>
       </tbody>
     </table>
