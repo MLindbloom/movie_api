@@ -47,10 +47,7 @@ app.use(express.static('public'));
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect(process.env.CONNECTION_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.CONNECTION_URI);
 
 //GET ALL USERS
 app.get('/users', async (req, res) => {
