@@ -47,7 +47,10 @@ app.use(express.static('public'));
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect(process.env.CONNECTION_URI);
+mongoose.connect(process.env.CONNECTION_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 //GET ALL USERS
 app.get('/users', async (req, res) => {
@@ -78,7 +81,7 @@ app.get(
 );
 
 //READ INDEX PAGE
-app.get('/', function (req, res, next) {
+app.get('/', (req, res) => {
   res.send('Welcome to my movie app!');
 });
 
