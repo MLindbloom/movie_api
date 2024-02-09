@@ -13,7 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const cors = require('cors');
 
-let allowedOrigins = ['http://localhost:8080'];
+let allowedOrigins = [
+  'http://localhost:8080',
+  'https://mll-movie-app-2b0ca377526b.herokuapp.com',
+];
 
 app.use(
   cors({
