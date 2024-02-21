@@ -17,6 +17,7 @@ let allowedOrigins = [
   'http://localhost:8080',
   'https://mll-movie-app-2b0ca377526b.herokuapp.com',
   'http://localhost:1234',
+  'https://mlindbloom.github.io/myFlix-client',
 ];
 
 app.use(
@@ -48,7 +49,13 @@ app.use(express.static('public'));
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect(process.env.CONNECTION_URI);
+console.log('CONNECTION_URI', process.env.CONNECTION_URI);
+mongoose
+  .connect(
+    'mongodb+srv://mllindbloom:Lylers1@mlldb.g2fnlso.mongodb.net/mllDB?retryWrites=true&w=majority',
+  )
+  .then(() => console.log('Connected to mongo'))
+  .catch((error) => console.log('Error connectiong to mongo', error));
 
 //GET ALL USERS
 app.get('/users', async (req, res) => {
