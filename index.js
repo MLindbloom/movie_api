@@ -4,14 +4,14 @@ const express = require('express'),
   path = require('path'),
   uuid = require('uuid'),
   mongoose = require('mongoose'),
-  Models = require('./models.js');
+  Models = require('./models.js'),
+  cors = require('cors');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-const cors = require('cors');
+app.use(morgan('common'));
 
 let allowedOrigins = [
   'http://localhost:8080',
@@ -26,14 +26,11 @@ let allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        let message =
-          'The CORS policy for this application does not allow access from origin ' +
-          origin;
-        return callback(new Error(message), false);
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true); // Allow requests from specified origins
+      } else {
+        callback(new Error('Not allowed by CORS')); // Block requests from other origins
       }
-      return callback(null, true);
     },
   }),
 );
@@ -41,8 +38,6 @@ app.use(
 const { check, validationResult } = require('express-validator');
 
 let auth = require('./auth')(app);
-
-app.use(morgan('common'));
 
 const passport = require('passport');
 require('./passport');
@@ -301,6 +296,6 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 8080;
-app.listen(port, '0.0.0.0', () => {
-  console.log('Listening on Port ' + port);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
