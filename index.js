@@ -26,11 +26,14 @@ let allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true); // Allow requests from specified origins
-      } else {
-        callback(new Error('Not allowed by CORS')); // Block requests from other origins
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        let message =
+          'The CORS policy for this application does not allow access from origin ' +
+          origin;
+        return callback(new Error(message), false);
       }
+      return callback(null, true);
     },
   }),
 );
@@ -296,6 +299,6 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 8080;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log('Listening on Port ' + port);
 });
