@@ -15,7 +15,7 @@ app.use(morgan('common'));
 
 let allowedOrigins = [
   'http://localhost:8080',
-  'https://mll-movie-app-2b0ca377526b.herokuapp.com',
+  'https://mll-movie-app-2b0ca377526b.herokuapp.com/',
   'http://localhost:1234',
   'https://mlindbloom.github.io/myFlix-client',
   'https://main--mll-myflix.netlify.app/',
