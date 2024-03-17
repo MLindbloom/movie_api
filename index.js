@@ -231,7 +231,7 @@ app.put(
 
 //ADD A MOVIE TO A USER'S LIST OF FAVORITE MOVIES
 app.post(
-  '/users/:Username/movies/:MovieID',
+  '/users/:Username/movies/:movieID',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     await Users.findOneAndUpdate(
