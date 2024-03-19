@@ -20,6 +20,7 @@ let allowedOrigins = [
   'https://mlindbloom.github.io/myFlix-client',
   'https://main--mll-myflix.netlify.app',
   'https://mll-myflix.netlify.app',
+  'http://localhost:4200',
 ];
 
 app.use(
