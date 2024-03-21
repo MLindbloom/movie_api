@@ -21,8 +21,9 @@ let allowedOrigins = [
   'https://main--mll-myflix.netlify.app',
   'https://mll-myflix.netlify.app',
   'http://localhost:4200',
-  'https://mll-myflix-angular.netlify.app',
+  'https://main--mll-myflix-angular.netlify.app',
   'https://main--mll-myflix-angular.netlify.app/welcome',
+  'https://mll-myflix-angular.netlify.app',
 ];
 
 app.use(
